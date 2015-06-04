@@ -217,7 +217,7 @@ void * liftCtrlCallback(){
             msg = buf.command;
             if ((int)msg.floor == (int)client_array[i].clientInfo){
               msg.type = ELEVATOR_APPEAR;
-            } else {
+             } else {
               msg.type = ELEVATOR_MOVING;
             }
             write(client_array[i].sockfd, &msg, sizeof(struct message));
@@ -230,8 +230,8 @@ void * liftCtrlCallback(){
             write(client_array[i].sockfd, &(buf.command), sizeof(struct message));
           } else if (client_array[i].clientType == CLIENT_FLOOR){
             msg = buf.command;
-            if ((int)msg.floor == (int)client_array[i].clientInfo){
-              msg.type = ELEVATOR_APPEAR;
+           	if ((int)msg.floor == (int)client_array[i].clientInfo){
+              msg.type = ELEVATOR_APPEAR;              
               write(client_array[i].sockfd, &msg, sizeof(struct message));
             }
             msg.type = ELEVATOR_STOP;            

@@ -120,13 +120,13 @@ int main(int argc, char *argv[]) {
 
       	    switch(msg.type){
               case ELEVATOR_MOVING:
-                printf("Elevator is moving\n");
+                // printf("Elevator is moving\n");
                 break;
               case ELEVATOR_STOP:
-                printf("Elevator was stoped\n");
+               // printf("Elevator was stoped\n");
                 break;
               case ELEVATOR_APPEAR:
-                printf("Elevator appears\n");
+                printf("Elevator appears %d\n", (int)msg.floor);
                 break;
         	    case SHUTDOWN_SERVER:
         	      close(sockfd); //close the current client

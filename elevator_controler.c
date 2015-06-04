@@ -161,13 +161,13 @@ void updateState(struct message msg){
   switch(msg.type){
     case LIFT_UP:      
       elevator.state = ELEVATOR_STATE_MOVING;
-      elevator.height += 1;            
+      elevator.height += ELEVATOR_SPEED;            
       printf("^ UP - %f\n", elevator.height);
       notifyMovement();
       break;
     case LIFT_DOWN:      
       elevator.state = ELEVATOR_STATE_MOVING;
-      elevator.height -= 1;
+      elevator.height -= ELEVATOR_SPEED;
       if (elevator.height < 0) elevator.height = 0;      
       notifyMovement();
       printf("v DOWN - %f\n", elevator.height);
@@ -198,7 +198,7 @@ void notifyMovement(){
   
   struct message msg;
   
-  msleep((long)(1000/ELEVATOR_SPEED));
+  msleep(1000);
   setupMessage(&msg, ELEVATOR_REQUEST_UPDATE, elevator.height);
   write(sockfd, &msg, sizeof(struct message));
 }
